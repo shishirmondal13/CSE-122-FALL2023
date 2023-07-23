@@ -1,2 +1,8 @@
-# CSE-122-FALL2023
-This is an OOP Lab Repository
+Name : Shishir Mondal
+
+ID: 22235103052
+
+Intake : 51
+
+section: 02
+
