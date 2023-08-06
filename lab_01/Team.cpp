@@ -1,12 +1,17 @@
-#include<stdio.h>
-int main(){
-
-int i,a,c,v,b,cnt=0;
-scanf("%d",&v);
-for(i=0;i<v;i++){
-    scanf("%d%d%d",&a,&b,&c);
-    if((a==1&&b==1&&c==1)||(a==0&&b==1&&c==1)||(a==1&&b==1&&c==0)||(a==1&&b==0&&c==1))
-        cnt=cnt+1;
+#include <iostream>
+using namespace std;
+int main()
+{
+    int n, Petya, Vasya, Tonya, number(0);
+    cin >> n;
+    while (n--)
+    {
+        cin >> Petya >> Vasya >> Tonya;
+        if (Petya + Vasya + Tonya >= 2)
+        {
+            number += 1;
+        }
+    }
+    cout << number << endl;
+    return 0;
 }
-        printf("%d",cnt);
-return 0;}
