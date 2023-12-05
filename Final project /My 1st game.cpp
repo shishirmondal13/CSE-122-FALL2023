@@ -6,7 +6,7 @@
 using namespace std;
 
 // Your existing code here...
-void setcolorandbackground(int textc,int backg)             //with this we can set text color and background color
+void setcolorandbackground(int textc,int backg) //with this we can set text color and background color
 {
     WORD color = (( backg & 0x0F )<<4) + ( textc & 0x0F );
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),color);
@@ -396,7 +396,7 @@ bool registerUser() {
     std::cin >> confirmPass;
 
     if (newPassword != confirmPass) {
-        std::cout << "\t Passwords do not match. Please try again." << std::endl;
+        std::cout << "\t Passwords do not match.Please wait for 5 seconds, then try again." << std::endl;
         Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
         return false;
     }
@@ -423,7 +423,7 @@ bool login() {
     std::cin >> password;
 
     if (users[username] != password) {
-        std::cout << "\t Incorrect password. Please try again." << std::endl;
+        std::cout << "\t Incorrect password.Please wait for 5 seconds, then try again." << std::endl;
          Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
         return false;
     }
@@ -451,7 +451,7 @@ bool resetPassword() {
     std::cin >> confirmPass;
 
     if (newPassword != confirmPass) {
-        std::cout << "\t Passwords do not match. Please try again." << std::endl;
+        std::cout << "\t Passwords do not match.please wait for 5 seconds, then try again." << std::endl;
            Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
         return false;
     }
