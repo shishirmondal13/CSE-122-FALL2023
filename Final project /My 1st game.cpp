@@ -397,12 +397,14 @@ bool registerUser() {
 
     if (newPassword != confirmPass) {
         std::cout << "\t Passwords do not match. Please try again." << std::endl;
+        Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
         return false;
     }
 
     users[newUsername] = newPassword;
 
     std::cout << "\t Registration successful! You can now log in." << std::endl;
+    Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
     return true;
 }
 
@@ -413,6 +415,7 @@ bool login() {
 
     if (users.find(username) == users.end()) {
         std::cout << "\t Username not found. Please register or try again." << std::endl;
+         Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
         return false;
     }
 
@@ -421,25 +424,74 @@ bool login() {
 
     if (users[username] != password) {
         std::cout << "\t Incorrect password. Please try again." << std::endl;
+         Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
         return false;
     }
 
     std::cout << "\t Login successful! Welcome, " << username << "!" << std::endl;
+    Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
     return true;
 }
 
 // Function for the login page
+bool resetPassword() {
+    std::string username, newPassword, confirmPass;
+    std::cout << "\t Enter your username: ";
+    std::cin >> username;
+
+    if (users.find(username) == users.end()) {
+        std::cout << "\t Username not found. Please register or try again." << std::endl;
+           Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+           return false;
+    }
+
+    std::cout << "\t Enter a new password: ";
+    std::cin >> newPassword;
+    std::cout << "\t Confirm your new password: ";
+    std::cin >> confirmPass;
+
+    if (newPassword != confirmPass) {
+        std::cout << "\t Passwords do not match. Please try again." << std::endl;
+           Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+        return false;
+    }
+
+    users[username] = newPassword;
+
+    std::cout << "\t Password reset successful! You can now log in with your new password." << std::endl;
+       Sleep(5000); // Pause for 5 seconds (5000 milliseconds)
+    return true;
+}
 void loginPage() {
     bool isLoggedIn = false;
 
     while (!isLoggedIn) {
         system("CLS"); // Clears the screen
         std::cout << "\n\n\t\t\tLOGIN PAGE\n\n";
-        isLoggedIn = login(); // Call the login function
+        std::cout << "\t 1. Login\n";
+        std::cout << "\t 2. Forgot Password\n";
+        std::cout << "\t Enter your choice: ";
+
+        int loginChoice;
+        std::cin >> loginChoice;
+
+        switch (loginChoice) {
+            case 1:
+                isLoggedIn = login(); // Call the login function
+                break;
+            case 2:
+                resetPassword(); // Call the password reset function
+                break;
+            default:
+                std::cout << "\t Invalid choice. Please try again." << std::endl;
+                Sleep(60000); // Pause for 1 minute (60000 milliseconds)
+                break;
+        }
     }
 
     std::cout << "\n\n\t\tRedirecting to Main Menu...\n\n";
 }
+
 
 int main() {
     // ... (existing code)
